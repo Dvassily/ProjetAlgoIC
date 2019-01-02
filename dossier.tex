@@ -1,5 +1,6 @@
 \documentclass{report}
 \usepackage[french]{babel}
+\usepackage[]{algorithm2e}
 \title{Complexité et algorithmique - Miniprojet 2}
 \author{Basil dalié et Simon Serrano}
 \date{Decembre 2018}
@@ -20,6 +21,19 @@ abcdefhij
 \begin{itemize}
 \item Proposez un algorithme efficace pour résoudre le problème IC (version minimisation) et évaluez sa complexité
 \end{itemize}
-klmnopqrs
+\begin{algorithm}[H]
+  \KwData{Un ensemble de sommets V représentant les protéines et un ensemble de sous-complexes C}
+  \KwResult{Un graph représentant la solution optimale au problème IC sous forme de liste d'adjascence}
+  $graph \gets list()$\;
+  \ForEach{subcomplex $C_i \in C$ }{
+    \ForEach{protein $p_{i_j} \in C_i$}{
+      \If{$j < size(C_i) - 1$}{
+        $add(graph, pair(p_{i_j}, p_{i_{j+1}}))$
+      }
+    }
+    
+    \Return $graph$
+  }
+\end{algorithm}
 
 \end{document}
