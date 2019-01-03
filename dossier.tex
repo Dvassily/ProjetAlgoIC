@@ -22,18 +22,17 @@ abcdefhij
 \item Proposez un algorithme efficace pour résoudre le problème IC (version minimisation) et évaluez sa complexité
 \end{itemize}
 \begin{algorithm}[H]
-  \KwData{Un ensemble de sommets V représentant les protéines et un ensemble de sous-complexes C}
+  \KwData{Un ensemble de sommets V représentant les protéines et une liste ordonnée de sous-complexes C}
   \KwResult{Un graphe représentant la solution optimale au problème IC sous forme de liste d'adjascence}
-  $graph \gets list()$\;
-  \ForEach{subcomplex $C_i \in C$ }{
-    \ForEach{protein $p_{i_j} \in C_i$}{
-      \If{$j < size(C_i) - 1$}{
-        $add(graph, pair(p_{i_j}, p_{i_{j+1}}))$
-      }
-    }
-    
-    \Return $graph$
-  }
+  Tant que tous les sous-complexe ne sont pas dans une chaine...
+    On prend le premier sous-complexe de la liste
+    Tant qu'on peut le chainer avec le sous-complexe courant (un seul element en commun entre le sous-complexe et la chaine courante), on le chaine et on le retire de la liste.
+    L'ordre des protéine dans les sous-complexe est modifié pour que les deux sous-complexe puissent être réliés
+  Pour chaque chaine...
+    Pour chaque sous-complexe...
+      Pour chaque protéine dans le sous-complexe:
+        On ajoute un lien entre la protéine et son successeur dans la liste d'adjascence
+  On renvoie le graph obtenu
 \end{algorithm}
 
 \end{document}
