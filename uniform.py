@@ -1,22 +1,23 @@
 import networkx as nx
-import random
-from random import choice
+from random import choice, random
+import matplotlib.pyplot as plt
+import numpy as np
 
 def uniforme(a,b):
-    return(a+(b-a)*random())
+    return int(a+(b-a)*random())
 
 
 def build_subcomplex(size, graph):
     subcomplex = list()
-    random_node = choice(graph.nodes())
+    random_node = np.random.choice(graph.nodes())
     subcomplex.append(random_node)
     while len(subcomplex)<size:
-        random_node = choice(nx.all_neighbors(graph, random_node))
-        subcomplex.append(random_node)
+        random_node = np.random.choice(list(graph.neighbors(random_node)))
+        if random_node not in subcomplex : subcomplex.append(random_node) 
     return subcomplex
 
 def build_full_graph(n):
-    return nx.gnp_random_graph(n, 0.2)
+    return nx.complete_graph(n)
 
 def instances(n=1, t=1):
     #Build a graph of size n
@@ -27,5 +28,11 @@ def instances(n=1, t=1):
     
     return graph, subcomplexes
 
+
+
+graph, subcomplexes = instances(100, 2)
+nx.draw(graph)
+plt.show()
+print(subcomplexes)
     
 
