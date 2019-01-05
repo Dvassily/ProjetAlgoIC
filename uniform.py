@@ -7,14 +7,14 @@ def uniforme(a,b):
     return int(a+(b-a)*random())
 
 
-def instances(n=1, t=1):
+def instances(n=1, t=1, p=1):
     complexes = list()
-    size = uniforme(1, n)
+    size = p
     for i in range(t):
         subcomplex = list()
         j=0
         while j <size:
-            node = np.random.choice(range(n))
+            node = uniforme(1, n)
             if node not in subcomplex :
                 subcomplex.append(node)
                 j+=1
