@@ -1,6 +1,4 @@
-import networkx as nx
 from random import random
-import matplotlib.pyplot as plt
 import numpy as np
 
 def uniforme(a,b):
